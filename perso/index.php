@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Bienvenue sur le serveur Alwaysdata de Pauline </title>
+    <title>Bienvenue sur le serveur Alwaysdata de Pauline</title>
     <style>
         body {
             background-image: url('https://paulinette88.alwaysdata.net/images/backgroundflower.jpg');
