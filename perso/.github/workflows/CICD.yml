@@ -1,5 +1,10 @@
 name: Industrialisation continue sur le serveur Alwaysdata
-on: push
+
+on:
+  push:
+    paths:
+      - '**'  # Déclenchement sur n'importe quel changement de fichier dans le repo
+
 jobs:
   Connexion:
     runs-on: ubuntu-latest
@@ -12,6 +17,7 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           script: |
             cd $HOME/www/
+
   Copy:
     needs: Connexion
     runs-on: ubuntu-latest
@@ -26,7 +32,6 @@ jobs:
             last_directory=$(basename ${{ runner.workspace }})
             cd $HOME/
             git clone https://github.com/${{ github.repository }}.git
-            # Vérifier si le répertoire de destination existe
             if [ "$(ls -A ./www)" ]; then
               rsync -r ./$last_directory/ ./www
               rm -rf ./$last_directory
