@@ -1,80 +1,122 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Bienvenue 🌷</title>
-  <style>
-    body {
-      background-color: #fff0f5;
-      font-family: 'Comic Sans MS', cursive, sans-serif;
-      color: #5c3c58;
-      margin: 0;
-      padding: 2rem;
-      text-align: center;
-    }
+    <meta charset="UTF-8">
+    <title>Bienvenue sur le serveur Alwaysdata de Pauline</title>
+    <style>
+        body {
+            background-image: url('https://paulinette88.alwaysdata.net/images/backgroundflower.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #FFC3C3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+        }
 
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
+        .welcome-container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow: hidden;
+        }
 
-    .flower {
-      font-size: 2rem;
-    }
+        h1 {
+            color: #B04664;
+            margin-bottom: 20px;
+        }
 
-    ul {
-      list-style: none;
-      padding: 0;
-      margin-top: 2rem;
-      max-width: 400px;
-      margin-left: auto;
-      margin-right: auto;
-    }
+        p {
+            color: #444;
+            margin-bottom: 20px;
+        }
 
-    li {
-      background-color: #ffe4ec;
-      border: 2px dashed #da8ca5;
-      margin: 10px 0;
-      padding: 1rem;
-      border-radius: 10px;
-      transition: background 0.3s;
-    }
+        .scroll-list {
+            max-height: 300px;
+            overflow-y: auto;
+            padding-right: 10px;
+            margin-top: 20px;
+            border: 1px solid #F2B7B5;
+            border-radius: 10px;
+            background-color: #fffafc;
+        }
 
-    li:hover {
-      background-color: #fdd3e6;
-    }
+        ul {
+            list-style: none;
+            padding: 15px 20px;
+            margin: 0;
+            text-align: left;
+        }
 
-    a {
-      text-decoration: none;
-      color: #b04173;
-      font-weight: bold;
-      font-size: 1.2rem;
-    }
+        li {
+            margin-bottom: 10px;
+            opacity: 0;
+            transform: translateY(10px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
 
-    footer {
-      margin-top: 3rem;
-      font-size: 0.9rem;
-      color: #aa6c8c;
-    }
-  </style>
+        /* Animation décalée pour chaque ligne */
+        <?php for ($i = 1; $i <= 20; $i++): ?>
+        li:nth-child(<?= $i ?>) { animation-delay: <?= $i * 0.1 ?>s; }
+        <?php endfor; ?>
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        a {
+            text-decoration: none;
+            color: #DB7B79;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #000000;
+        }
+
+        .secret-link {
+            color: inherit;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .secret-link:hover {
+            color: #aaa;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-
-  <h1>🌸 Mes jolies pages 🌸</h1>
-  <div class="flower">✿ ✿ ✿</div>
-
-  <ul>
-    <?php
-      $fichiers = glob("*.{php,html}", GLOB_BRACE);
-      foreach($fichiers as $fichier) {
-        if ($fichier != basename(_FILE_)) {
-          echo '<li><a href="' . htmlspecialchars($fichier) . '">' . htmlspecialchars($fichier) . '</a></li>';
-        }
-      }
-    ?>
-  </ul>
-
-  <footer>Fait avec 💖 pour une dev web qui aime les fleurs</footer>
-
+    <div class="welcome-container">
+        <h1>Bienvenue sur mes pages perso</h1>
+        <p>Cette page vous sert de sommaire pour accéder à mes travaux perso <a href="perso/" class="secret-link" title="Coin secret">💐</a></p>
+        <div class="scroll-list">
+            <ul>
+                <?php
+                    $fichiers = scandir('.');
+                    $pages = array_filter($fichiers, function($fichier) {
+                        return is_file($fichier) && preg_match('/\.(html|php)$/', $fichier) && $fichier !== 'index.php';
+                    });
+                    natcasesort($pages);
+                    foreach ($pages as $page) {
+                        $titre = ucwords(str_replace(['_', '-'], ' ', pathinfo($page, PATHINFO_FILENAME)));
+                        echo "<li><a href=\"$page\">$titre</a></li>";
+                    }
+                ?>
+            </ul>
+        </div>
+    </div>
 </body>
 </html>
