@@ -101,7 +101,7 @@
 <body>
     <div class="welcome-container">
         <h1>Bienvenue sur mes pages perso</h1>
-        <p>Cette page vous sert de sommaire pour accéder à mes travaux perso <a href="perso/" class="secret-link" title="Coin secret">💐</a></p>
+        <p>Cette page vous sert de sommaire pour accéder à mes travaux perso <a href="../" class="secret-link" title="Coin secret">💐</a></p>
         <div class="scroll-list">
             <ul>
                 <?php
