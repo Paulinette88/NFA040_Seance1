@@ -25,6 +25,7 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             text-align: center;
             max-width: 600px;
+            position: relative;
         }
 
         h1 {
@@ -37,9 +38,45 @@
             margin-bottom: 20px;
         }
 
+        .scroll-list {
+            max-height: 300px;
+            overflow-y: auto;
+            padding-right: 5px;
+            margin-top: 20px;
+            border: 1px solid #F2B7B5;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        /* Filtres haut/bas pour indiquer qu’on peut scroller */
+        .scroll-list::before,
+        .scroll-list::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 30px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .scroll-list::before {
+            top: 0;
+            background: linear-gradient(to bottom, white 0%, transparent 100%);
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .scroll-list::after {
+            bottom: 0;
+            background: linear-gradient(to top, white 0%, transparent 100%);
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
         ul {
             list-style: none;
-            padding: 0;
+            padding: 15px 20px;
             margin: 0;
             text-align: left;
         }
@@ -100,19 +137,21 @@
     <div class="welcome-container">
         <h1>Bienvenue sur la page de Pauline</h1>
         <p>Cette page vous sert de sommaire pour accéder à mes travaux<a href="perso/" class="secret-link" title="Coin secret">.</a></p>
-        <ul>
-            <?php
-                $fichiers = scandir('.');
-                $pages = array_filter($fichiers, function($fichier) {
-                    return is_file($fichier) && preg_match('/\.(html|php)$/', $fichier) && $fichier !== 'index.php';
-                });
-                natcasesort($pages);
-                foreach ($pages as $page) {
-                    $titre = ucwords(str_replace(['_', '-'], ' ', pathinfo($page, PATHINFO_FILENAME)));
-                    echo "<li><a href=\"$page\">$titre</a></li>";
-                }
-            ?>
-        </ul>
+        <div class="scroll-list">
+            <ul>
+                <?php
+                    $fichiers = scandir('.');
+                    $pages = array_filter($fichiers, function($fichier) {
+                        return is_file($fichier) && preg_match('/\.(html|php)$/', $fichier) && $fichier !== 'index.php';
+                    });
+                    natcasesort($pages);
+                    foreach ($pages as $page) {
+                        $titre = ucwords(str_replace(['_', '-'], ' ', pathinfo($page, PATHINFO_FILENAME)));
+                        echo "<li><a href=\"$page\">$titre</a></li>";
+                    }
+                ?>
+            </ul>
+        </div>
     </div>
 </body>
 </html>
