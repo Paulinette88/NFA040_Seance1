@@ -3,39 +3,39 @@ name: Industrialisation continue sur le serveur Alwaysdata
 on:
   push:
     paths:
-      - '**'  # Déclenchement sur n'importe quel changement de fichier dans le repo
+      - '**'
 
 jobs:
-  Connexion:
+  Deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Connexion SSH avec le serveur
-        uses: appleboy/ssh-action@master
-        with:
-          host: "ssh-${{ secrets.USERNAME }}.alwaysdata.net"
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          script: |
-            cd $HOME/www/
+      - name: Cloner le dépôt localement pour inspection
+        uses: actions/checkout@v3
 
-  Copy:
-    needs: Connexion
-    runs-on: ubuntu-latest
-    steps:
-      - name: Connexion SSH avec le serveur
+      - name: Debug - Liste les fichiers du repo
+        run: ls -R
+
+      - name: Déploiement via SSH
         uses: appleboy/ssh-action@master
         with:
           host: "ssh-${{ secrets.USERNAME }}.alwaysdata.net"
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           script: |
-            last_directory=$(basename ${{ runner.workspace }})
-            cd $HOME/
-            git clone https://github.com/${{ github.repository }}.git
-            if [ "$(ls -A ./www)" ]; then
-              rsync -r ./$last_directory/ ./www
-              rm -rf ./$last_directory
+            echo "🔐 Connexion au serveur"
+            cd $HOME
+            echo "📁 Clonage du dépôt sur le serveur"
+            rm -rf repo_temp
+            git clone https://github.com/${{ github.repository }}.git repo_temp
+            echo "📂 Contenu cloné :"
+            ls -R repo_temp
+
+            if [ -d "$HOME/www" ]; then
+              echo "🚀 Déploiement des fichiers dans www/"
+              rsync -av --delete repo_temp/ www/
+              echo "🧹 Nettoyage temporaire"
+              rm -rf repo_temp
             else
-              echo "Le répertoire flask de destination sur votre serveur n'existe pas"
+              echo "❌ Le répertoire www n'existe pas sur le serveur"
               exit 1
             fi
