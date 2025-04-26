@@ -23,10 +23,9 @@ function principale(){
 function bouger(){
 
 	//Code à créer pour faire bouger la boule enemy
-	                ballX -= 15;
-                    	if(ballX<15){ballX=15;}
-			document.getElementById('ball2').setAttribute("cx", ballX);
-			break;
+	ballX -= 15;
+        if(enemyX<15){enemyX=15;}
+	document.getElementById('ball2').setAttribute("cx", enemyX);	
 	
 	
 }
