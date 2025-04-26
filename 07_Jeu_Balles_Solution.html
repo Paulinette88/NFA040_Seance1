@@ -1,0 +1,92 @@
+<html>
+<head>
+<style>
+#zonedejeux{background-color:antiquewhite;
+			width:900px; height:400px;
+			position:absolute; top:3px; left:3px;
+			z-index:1;}
+h1{position:absolute;top:-7px; left:320px; z-index:2;}
+</style>
+
+<script>
+//var globale
+var ball2X = 885;
+var ball2Y = 200;
+var speed = 500;
+function principale(){
+	window.addEventListener('keydown', deplacement, true);
+	ball2X = parseInt(document.getElementById('ball2').getAttribute("cx"));
+	enemy = setInterval(bouger, speed);
+	
+}
+
+function bouger(){
+	var ycible = parseInt(document.getElementById('ball').getAttribute("cy"));
+	var xcible = parseInt(document.getElementById('ball').getAttribute("cx"));
+	
+	if (ball2Y > ycible){ball2Y -=15;}
+	else if (ball2Y < ycible){ball2Y +=15;}
+	
+	ball2X -= 15;
+	if(ball2X<15){ball2X=15; 
+				  //clearInterval(enemy); 
+				  alert('You Win!!'); 
+				  speed -=100; 
+				  ball2X = 885;
+				  ball2Y = 200;}
+	
+	if((ball2X>(xcible-15) && ball2X<(xcible+15)) && (ball2Y>(ycible-15) && ball2Y<(ycible+15))){clearInterval(enemy); alert('You Loose!!');}
+	
+	document.getElementById('ball2').setAttribute("cx", ball2X);
+	document.getElementById('ball2').setAttribute("cy", ball2Y);
+	
+}
+
+
+
+
+function deplacement(evt) {
+		   var ballX = parseInt(document.getElementById('ball').getAttribute("cx"));
+		   var ballY = parseInt(document.getElementById('ball').getAttribute("cy"));
+           switch (evt.keyCode) {
+                // Gauche 
+                case 37:
+					ballX -= 15;
+                    if(ballX<15){ballX=15;}
+					document.getElementById('ball').setAttribute("cx", ballX);
+					break;
+                // Droite 
+                case 39:
+                    ballX += 15;
+					if(ballX>885){ballX=885;}
+                    document.getElementById('ball').setAttribute("cx", ballX);
+					break;
+				// Haut 
+                case 38:
+                    ballY -= 15;
+                    if(ballY<15){ballY=15;}
+					document.getElementById('ball').setAttribute("cy", ballY);
+					break;
+				// Haut 
+                case 40:
+                    ballY += 15;
+					if(ballY>385){ballY=385;}
+                    document.getElementById('ball').setAttribute("cy", ballY);
+					break;
+            }
+
+}
+
+	 
+</script>
+</head>
+<body onload="principale()">
+	<h1>Jeux Javascript</h1>
+	<svg id="zonedejeux">
+	<circle cx="450" cy="200" r="15" fill="tomato" id="ball" />
+	<circle cx="885" cy="200" r="15" fill="blue" id="ball2" />
+	
+	</svg>
+<body>
+</html>
+
