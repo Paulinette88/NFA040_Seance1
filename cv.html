@@ -1,1 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+  <head>
+  <meta charset="UTF-8">
+  <title>Mon CV</title>
+  <link rel="stylesheet" href="style.css">
+
+  body {
+  font-family: Arial, sans-serif;
+  margin: 40px;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+section {
+  margin-bottom: 30px;
+}
+
+h2 {
+  color: #2c3e50;
+  border-bottom: 2px solid #2c3e50;
+  padding-bottom: 5px;
+}
+
+ul {
+  list-style-type: square;
+  margin-left: 20px;
+}
+
+form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #2c3e50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #34495e;
+}
+
+  
+</head>
+  
+<body>
+  <header>
+    <h1>Pauline POUJOL</h1>
+    <p>Adresse : 39 avenue de l'été, 75000 PARIS ,</p>
+    <p>Email : <a href="mailto:jean.dupont@example.com">pauline.poujol@example.com</a></p>
+    <p>Téléphone : 06 07 08 09 10</p>
+  </header>
+
+  <section>
+    <h2> Objectif Professionnel</h2>
+    <p>Développeuse en devenir, je souhaite intégrer une équipe dynamique pour concevoir des sites internet.</p>
+  </section>
+
+  <section>
+    <h2> Expériences Professionnelles</h2>
+    <ul>
+      <li>
+        <strong>Assistante dentaire</strong> – Cabiet d'orthodontie (2023–2025)
+        <br>Assister le dentiste au fauteuil, stérilisation du materiel.
+      </li>
+      <li>
+        <strong>Secretaire medicale</strong> – Hopital (2015-2022)
+        <br>Acceuil et installtion des patients, facturation, télétransmissions.
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>🎓 Formations</h2>
+    <ul>
+      <li>
+        <strong>Bachelor Développement Web</strong> – IUT de Bordeaux (2020–2023)
+      </li>
+      <li>
+        <strong>Baccalauréat Litteraire</strong> – Lycée Montaigne (2005)
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>🛠️ Compétences</h2>
+    <ul>
+      <li>HTML5 / CSS3</li>
+      <li>JavaScript </li>
+      <li>GitHub</li>
+      <li>Responsive Design</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>🎨 Loisirs</h2>
+    <ul>
+      <li>Photographie</li>
+      <li>Jardinage</li>
+      <li>Cuisine</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📬 Contact</h2>
+    <form action="#" method="post">
+      <label for="nom">Nom complet :</label>
+      <input type="text" id="nom" name="nom" required>
+
+      <label for="email">Adresse email :</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="message">Message :</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+
+      <button type="submit">Envoyer</button>
+    </form>
+  </section>
+</body>
+</html>
 
