@@ -1,156 +1,200 @@
 <!DOCTYPE html>
 <html lang="fr">
-
-  <head>
+<head>
   <meta charset="UTF-8">
-  <title>Mon CV</title>
-  <link rel="stylesheet" href="style.css">
+  <title>CV – Pauline Poujol</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      color: #333;
+    }
+    .resume {
+      display: grid;
+      grid-template-columns: 30% 1fr;
+      grid-template-rows: auto;
+      grid-template-areas:
+        "photo info"
+        "objectif objectif"
+        "experiences experiences"
+        "formation formation"
+        "competences competences"
+        "loisirs loisirs"
+        "contact contact";
+      max-width: 900px;
+      margin: 40px auto;
+      gap: 20px;
+      background: #fff;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .photo { grid-area: photo; }
+    .info { grid-area: info; }
+    .objectif { grid-area: objectif; }
+    .experiences { grid-area: experiences; }
+    .formation { grid-area: formation; }
+    .competences { grid-area: competences; }
+    .loisirs { grid-area: loisirs; }
+    .contact { grid-area: contact; }
 
-  <style> 
-  body {
-  font-family: Arial, sans-serif;
-  margin: 0px;
-  background-color: #f9f9f9;
-  color: #333;
-}
+    .photo img {
+      width: 100%;
+      border-radius: 3px;
+      border: 5px solid #fff;
+      display: block;
+    }
+    .info h1 {
+      margin: 10px 0 5px;
+      font-size: 1.8em;
+    }
+    .info p {
+      margin: 3px 0;
+    }
+    h2 {
+      margin-top: 0;
+      color: #a38f8d;
+      border-bottom: 2px solid #e0d4d4;
+      padding-bottom: 5px;
+    }
+    .experiences .job {
+      margin-bottom: 15px;
+    }
+    .experiences .job h3 {
+      margin: 5px 0;
+    }
+    .experiences .job .date {
+      font-style: italic;
+      color: #666;
+    }
+    ul {
+      list-style: disc inside;
+      margin: 5px 0 10px;
+      padding: 0;
+    }
+    form label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    form button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: #a38f8d;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    form button:hover {
+      background: #8e7a78;
+    }
 
-header {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-h1 {
-  font-size: 2.5em;
-  margin-bottom: 10px;
-}
-
-section {
-  margin-bottom: 30px;
-}
-
-h2 {
-  color: #2c3e50;
-  border-bottom: 2px solid #2c3e50;
-  padding-bottom: 5px;
-}
-
-ul {
-  list-style-type: square;
-  margin-left: 20px;
-}
-
-form {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-label {
-  display: block;
-  margin-top: 15px;
-  font-weight: bold;
-}
-
-input, textarea {
-  width: 100%;
-  padding: 10px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-button {
-  margin-top: 15px;
-  padding: 10px 20px;
-  background-color: #2c3e50;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #34495e;
-}
-</style>  
-  
+    @media (max-width: 700px) {
+      .resume {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "photo"
+          "info"
+          "objectif"
+          "experiences"
+          "formation"
+          "competences"
+          "loisirs"
+          "contact";
+      }
+    }
+  </style>
 </head>
-  
 <body>
-  <header>
-    <h1>Pauline POUJOL</h1>
-    <p>Adresse : 39 avenue de l'été, 75000 PARIS ,</p>
-    <p>Email : <a href="mailto:jean.dupont@example.com">pauline.poujol@example.com</a></p>
-    <p>Téléphone : 06 07 08 09 10</p>
-  </header>
+  <article class="resume">
+    <section class="photo">
+      <img src="photo.jpg" alt="Photo de Pauline Poujol">
+    </section>
 
-  <section>
-    <h2> Objectif Professionnel</h2>
-    <p>Développeuse en devenir, je souhaite intégrer une équipe dynamique pour concevoir des sites internet.</p>
-  </section>
+    <section class="info">
+      <h1>Pauline POUJOL</h1>
+      <p>39 avenue de l'été, 75000 Paris</p>
+      <p>Email : <a href="mailto:pauline.poujol@example.com">pauline.poujol@example.com</a></p>
+      <p>Téléphone : 06 07 08 09 10</p>
+    </section>
 
-  <section>
-    <h2> Expériences Professionnelles</h2>
-    <ul>
-      <li>
-        <strong>Assistante dentaire</strong> – Cabiet d'orthodontie (2023–2025)
-        <br>Assister le dentiste au fauteuil, stérilisation du materiel.
-      </li>
-      <li>
-        <strong>Secretaire medicale</strong> – Hopital (2015-2022)
-        <br>Acceuil et installtion des patients, facturation, télétransmissions.
-      </li>
-    </ul>
-  </section>
+    <section class="objectif">
+      <h2>Objectif Professionnel</h2>
+      <p>Développeuse en devenir, je souhaite intégrer une équipe dynamique pour concevoir et optimiser des sites internet.</p>
+    </section>
 
-  <section>
-    <h2> Formations</h2>
-    <ul>
-      <li>
-        <strong>Bachelor Développement Web</strong> – IUT de Bordeaux (2020–2023)
-      </li>
-      <li>
-        <strong>Baccalauréat Litteraire</strong> – Lycée Montaigne (2005)
-      </li>
-    </ul>
-  </section>
+    <section class="experiences">
+      <h2>Expériences Professionnelles</h2>
+      <div class="job">
+        <h3>Assistante dentaire</h3>
+        <span class="date">2023 – 2025</span>
+        <em>Cabinet d'orthodontie, Paris</em>
+        <ul>
+          <li>Assister le dentiste au fauteuil.</li>
+          <li>Stérilisation et préparation du matériel.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <h3>Secrétaire médicale</h3>
+        <span class="date">2015 – 2022</span>
+        <em>Hôpital, Paris</em>
+        <ul>
+          <li>Accueil et installation des patients.</li>
+          <li>Facturation et télétransmissions.</li>
+        </ul>
+      </div>
+    </section>
 
-  <section>
-    <h2> Compétences</h2>
-    <ul>
-      <li>HTML5 / CSS3</li>
-      <li>JavaScript </li>
-      <li>GitHub</li>
-      <li>Responsive Design</li>
-    </ul>
-  </section>
+    <section class="formation">
+      <h2>Formations</h2>
+      <ul>
+        <li><strong>Bachelor Développement Web</strong> – IUT de Bordeaux (2020–2023)</li>
+        <li><strong>Baccalauréat Littéraire</strong> – Lycée Montaigne (2005)</li>
+      </ul>
+    </section>
 
-  <section>
-    <h2> Loisirs</h2>
-    <ul>
-      <li>Photographie</li>
-      <li>Jardinage</li>
-      <li>Cuisine</li>
-    </ul>
-  </section>
+    <section class="competences">
+      <h2>Compétences</h2>
+      <ul>
+        <li>HTML5 / CSS3</li>
+        <li>JavaScript</li>
+        <li>GitHub</li>
+        <li>Responsive Design</li>
+      </ul>
+    </section>
 
-  <section>
-    <h2> Contact</h2>
-    <form action="#" method="post">
-      <label for="nom">Nom complet :</label>
-      <input type="text" id="nom" name="nom" required>
+    <section class="loisirs">
+      <h2>Loisirs</h2>
+      <ul>
+        <li>Photographie</li>
+        <li>Jardinage</li>
+        <li>Cuisine</li>
+      </ul>
+    </section>
 
-      <label for="email">Adresse email :</label>
-      <input type="email" id="email" name="email" required>
+    <section class="contact">
+      <h2>Contact</h2>
+      <form action="#" method="post">
+        <label for="contact-nom">Nom complet :</label>
+        <input type="text" id="contact-nom" name="nom" required>
 
-      <label for="message">Message :</label>
-      <textarea id="message" name="message" rows="5" required></textarea>
+        <label for="contact-email">Adresse email :</label>
+        <input type="email" id="contact-email" name="email" required>
 
-      <button type="submit">Envoyer</button>
-    </form>
-  </section>
+        <label for="contact-message">Message :</label>
+        <textarea id="contact-message" name="message" rows="5" required></textarea>
+
+        <button type="submit">Envoyer</button>
+      </form>
+    </section>
+  </article>
 </body>
 </html>
-
